@@ -1,0 +1,47 @@
+{% extends '_layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="product-page spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="product__page__content">
+          <div class="product__page__title">
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="section-title">
+                  <h4>{{ selected_genre }}</h4>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <form method="get" class="product__page__filter">
+                  <select name="genre" onchange="this.form.submit()">
+                    <option value="">All</option>
+                    {% for genre in all_genres %}
+                      <option value="{{ genre }}" {% if genre == selected_genre %}selected{% endif %}>{{ genre }}</option>
+                    {% endfor %}
+                  </select>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            {% for product in products %}
+              {% include '_sections/_product_card.html' with product=product %}
+            {% empty %}
+              <p>No products in this category.</p>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        {% include '_sections/sidebar.html' %}
+      </div>
+    
+    </div>
+  </div>
+</section>
+{% endblock %}

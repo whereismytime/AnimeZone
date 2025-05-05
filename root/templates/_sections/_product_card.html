@@ -1,0 +1,26 @@
+{# templates/_sections/_product_card.html #}
+{% load static %}
+
+<div class="col-lg-4 col-md-6 col-sm-6">
+    <div class="product__item">
+        <div class="product__item__pic set-bg" data-setbg="{% static product.image %}">
+            <div class="ep">{{ product.episodes }}</div>
+            <div class="comment"><i class="fa fa-comments"></i> {{ product.comments|default:0 }}</div>
+            <div class="view"><i class="fa fa-eye"></i> {{ product.views }}</div>
+        </div>
+        <div class="product__item__text">
+            <ul>
+                {% for genre in product.genres %}
+                    <li>{{ genre }}</li>
+                {% endfor %}
+            </ul>
+            <h5>
+                {% if product.slug %}
+                    <a href="{% url 'anime_details' product.slug %}">{{ product.title }}</a>
+                {% else %}
+                    {{ product.title }}
+                {% endif %}
+            </h5>
+        </div>
+    </div>
+</div>

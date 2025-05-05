@@ -1,0 +1,42 @@
+{% load static %}
+<!-- Footer Section Begin -->
+<footer class="footer">
+    <div class="page-up">
+        <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="footer__logo">
+                    <a href="{% url 'index' %}">
+                        <img src="{% static 'img/logo.png' %}" alt="Logo">
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="footer__nav">
+                    <ul>
+                        <li class="{% if request.path == '/' %}active{% endif %}">
+                            <a href="{% url 'index' %}">Homepage</a>
+                        </li>
+                        <li class="{% if request.path == '/categories/' %}active{% endif %}">
+                            <a href="{% url 'categories' %}">Categories</a>
+                        </li>
+                        <li class="{% if request.path == '/blog/' %}active{% endif %}">
+                            <a href="{% url 'blog_list' %}">Our Blog</a>
+                        </li>
+                        <li><a href="#">Contacts</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <p>
+                    &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | 
+                    This template is made with <i class="fa fa-heart" aria-hidden="true"></i> 
+                    by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Section End -->
