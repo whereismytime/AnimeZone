@@ -2340,3 +2340,38 @@ ol {
 		padding: 18px 20px 20px;
 	}
 }
+
+/* === Custom Scoped Blog Styles === */
+.blog__section .blog__item {
+    position: relative;
+    height: 580px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.blog__section .blog__item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 60%, rgba(0, 0, 0, 0.0));
+    z-index: 1;
+}
+
+.blog__section .blog__item__text {
+    position: relative;
+    z-index: 2;
+    padding: 30px 25px;
+    color: #fff;
+    text-align: left;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.blog__section .blog__item__text p,
+.blog__section .blog__item__text h4 a {
+    color: #fff !important;
+}
