@@ -1,39 +1,45 @@
 {% extends '_layouts/base.html' %}
-
 {% load static %}
 
 {% block title %}Blog | Anime{% endblock %}
 
 {% block content %}
-<section class="blog spad">
+<section class="blog spad blog__section">
     <div class="container">
         <div class="row">
-            <!-- Пример постов -->
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="blog__item set-bg" data-setbg="{% static 'img/blog/blog-1.jpg' %}">
-                    <div class="blog__item__text">
-                        <p><span class="icon_calendar"></span> 01 March 2025</p>
-                        <h4><a href="#">Yuri Kuma Arashi Viverra Tortor Pharetra</a></h4>
+            {% for post in posts %}
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="blog__item set-bg" data-setbg="{{ post.image.url }}">
+                        <div class="blog__item__text">
+                            <p>
+                                <span class="icon_calendar"></span>
+                                {{ post.published_at|date:"d M Y" }}
+                            </p>
+                            <h4>
+                                <a href="{% url 'blog_details' post.slug %}">
+                                    {{ post.title|truncatechars:50 }}
+                                </a>
+                            </h4>
+                            <p>{{ post.content|truncatewords:20 }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="blog__item set-bg" data-setbg="{% static 'img/blog/blog-2.jpg' %}">
-                    <div class="blog__item__text">
-                        <p><span class="icon_calendar"></span> 10 March 2025</p>
-                        <h4><a href="#">Bok no Hero Academia Season 4 – 18</a></h4>
-                    </div>
+            {% empty %}
+                <div class="col-12 text-center">
+                    <p>😢 Жодного поста поки що не опубліковано.</p>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="blog__item set-bg" data-setbg="{% static 'img/blog/blog-3.jpg' %}">
-                    <div class="blog__item__text">
-                        <p><span class="icon_calendar"></span> 15 March 2025</p>
-                        <h4><a href="#">Fate/Stay Night: Unlimited Blade Works</a></h4>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
+
+<script>
+    // JS — фонове зображення
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll('.set-bg').forEach(function (el) {
+            const bg = el.getAttribute("data-setbg");
+            if (bg) el.style.backgroundImage = `url('${bg}')`;
+        });
+    });
+</script>
 {% endblock %}
