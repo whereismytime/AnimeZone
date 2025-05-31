@@ -2375,3 +2375,94 @@ ol {
 .blog__section .blog__item__text h4 a {
     color: #fff !important;
 }
+
+/* === Custom Styles for Blog Add Post Form (v3) === */
+
+.blog-add-post-page .section-title h4 {
+    color: #ffffff; /* Білий колір для заголовка секції, якщо він не успадковується */
+}
+
+.add-post-form label { /* Стилі для міток полів */
+    color: #ffffff;      /* Білий текст */
+    margin-bottom: .5rem; 
+    display: block; 
+}
+
+/* Поля вводу, що мають клас .form-control (текст та textarea) */
+.add-post-form .form-control {
+    background-color: #ffffff; /* Білий фон */
+    color: #212529;            /* Темний текст, що вводиться */
+    border: 1px solid #444857; /* Темніша рамка, щоб було видно на білому фоні поля */
+}
+
+.add-post-form .form-control:focus { /* Стилі при фокусі */
+    border-color: #e53637; /* Колір рамки теми */
+    box-shadow: 0 0 0 0.2rem rgba(229, 54, 55, 0.25); /* Тінь теми */
+}
+
+/* Плейсхолдери для полів .form-control */
+.add-post-form .form-control::placeholder {
+    color: #6c757d; 
+    opacity: 1;
+}
+.add-post-form .form-control::-webkit-input-placeholder {
+    color: #6c757d;
+}
+.add-post-form .form-control::-moz-placeholder {
+    color: #6c757d;
+    opacity: 1;
+}
+.add-post-form .form-control:-ms-input-placeholder {
+    color: #6c757d;
+}
+.add-post-form .form-control::-ms-input-placeholder {
+    color: #6c757d;
+}
+
+/* Поле для завантаження файлу з класом .form-control-file */
+.add-post-form .form-control-file {
+    color: #b7b7b7; /* Колір тексту "Файл не вибрано" */
+    background-color: transparent; /* Прозорий фон */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Легка біла рамка */
+    padding: .375rem .75rem;
+    border-radius: .25rem;
+    display: block; /* Щоб займало всю ширину, якщо потрібно */
+    width: 100%;
+}
+
+.add-post-form .form-control-file:focus {
+    border-color: #e53637;
+    box-shadow: 0 0 0 0.2rem rgba(229, 54, 55, 0.25);
+}
+
+/* Стилізація "кнопки" всередині поля вибору файлу для Webkit */
+.add-post-form .form-control-file::-webkit-file-upload-button {
+  background: #52575c; 
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px; 
+}
+.add-post-form .form-control-file::-webkit-file-upload-button:hover {
+  background: #e53637;
+}
+
+/* Кнопка відправки .site-btn */
+.add-post-form .site-btn {
+    display: block; 
+    width: 100%; 
+    margin-top: 20px;
+}
+
+/* Повідомлення про помилки валідації */
+.add-post-form .alert.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24; 
+    padding: .75rem 1.25rem;
+    margin-top: 0.5rem; /* Трохи менший відступ зверху */
+    font-size: 0.9em;
+    width: 100%; 
+}

@@ -1,45 +1,77 @@
 {% extends '_layouts/base.html' %}
 {% load static %}
 
-{% block title %}Blog | Anime{% endblock %}
+{% block title %}Блог | AnimeZone{% endblock %}
 
 {% block content %}
 <section class="blog spad blog__section">
     <div class="container">
-        <div class="row">
+
+        
+        <div class="row mb-4">
+            <div class="col-12 text-right"> 
+                <a href="{% url 'blog:add_blog_post' %}" class="site-btn">
+                    <span class="icon_plus"></span> Додати пост
+                </a>
+            </div>
+        </div>
+    
+
+
+   
+        <div class="section-title mb-4"> 
+            <h4>Публікації адміністратора</h4> 
+        </div>
+        <div class="row mb-5">
+
             {% for post in posts %}
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="blog__item set-bg" data-setbg="{{ post.image.url }}">
-                        <div class="blog__item__text">
-                            <p>
-                                <span class="icon_calendar"></span>
-                                {{ post.published_at|date:"d M Y" }}
-                            </p>
-                            <h4>
-                                <a href="{% url 'blog_details' post.slug %}">
-                                    {{ post.title|truncatechars:50 }}
-                                </a>
-                            </h4>
-                            <p>{{ post.content|truncatewords:20 }}</p>
-                        </div>
-                    </div>
-                </div>
-            {% empty %}
-                <div class="col-12 text-center">
-                    <p>😢 Жодного поста поки що не опубліковано.</p>
+                {% if post.author and post.author.is_superuser %}
+                    {% include '_sections/_post_card.html' with post=post anon=False %}
+                {% endif %}
+            {% empty %} 
+                <div class="col-12">
+                    <p class="text-white-50">Поки що немає публікацій від адміністраторів.</p>
                 </div>
             {% endfor %}
         </div>
+
+        <hr class="my-5"> 
+
+        <div class="section-title mb-4">
+            <h4>Публікації користувачів</h4>
+        </div>
+        <div class="row mb-5">
+            {% for post in posts %}
+                {% if post.author and not post.author.is_superuser and post.author.is_authenticated %}
+                    {% include '_sections/_post_card.html' with post=post anon=False %}
+                {% endif %}
+            {% empty %} 
+                <div class="col-12">
+                    <p class="text-white-50">Поки що немає публікацій від зареєстрованих користувачів.</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <hr class="my-5">
+        
+        <div class="section-title mb-4">
+            <h4>Анонімні пости</h4>
+        </div>
+        <div class="row">
+            {% for post in posts %}
+                {% if not post.author %}
+                    {% include '_sections/_post_card.html' with post=post anon=True %}
+                {% endif %}
+            {% empty %} 
+                 <div class="col-12">
+                    <p class="text-white-50">Поки що немає анонімних публікацій.</p>
+                </div>
+            {% endfor %}
+        </div>
+
     </div>
 </section>
 
-<script>
-    // JS — фонове зображення
-    document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll('.set-bg').forEach(function (el) {
-            const bg = el.getAttribute("data-setbg");
-            if (bg) el.style.backgroundImage = `url('${bg}')`;
-        });
-    });
-</script>
+
+
 {% endblock %}

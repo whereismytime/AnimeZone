@@ -1,0 +1,49 @@
+{% extends '_layouts/base.html' %}
+{% load static %}
+
+{% block title %}Додати новий пост | Блог{% endblock %}
+
+{% block content %}
+<section class="blog-add-post-page spad"> {# Новий, більш специфічний клас для секції #}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                
+                <div class="section-title text-center mb-4"> 
+                    <h4>Додати новий пост у блог</h4>
+                </div>
+                
+                <form method="POST" enctype="multipart/form-data" class="add-post-form"> {# Додаємо клас до форми #}
+                    {% csrf_token %}
+
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {% for error in form.non_field_errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    {% for field in form %}
+                        <div class="form-group mb-3"> {# Використовуємо стандартний Bootstrap .form-group #}
+                            <label for="{{ field.id_for_label }}" class="text-white">{{ field.label }}:</label>
+                            {{ field }} {# Django додасть сюди класи з forms.py widgets ('form-control', 'form-control-file') #}
+                            
+                            {% if field.help_text %}
+                                <small class="form-text text-white-50">{{ field.help_text }}</small> 
+                            {% endif %}
+                            
+                            {% for error in field.errors %}
+                                <div class="alert alert-danger mt-1 p-2">{{ error }}</div> {# Змінив p-1 на p-2 для кращого вигляду #}
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                    
+                    <br>
+                    <button type="submit" class="site-btn">Запропонувати пост</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

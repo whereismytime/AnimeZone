@@ -23,7 +23,7 @@
                             <a href="{% url 'categories' %}">Categories</a>
                         </li>
                         <li class="{% if request.path == '/blog/' %}active{% endif %}">
-                            <a href="{% url 'blog_list' %}">Our Blog</a>
+                            <a href="{% url 'blog:blog_list' %}">Our Blog</a>
                         </li>
                         <li><a href="#">Contacts</a></li>
                     </ul>
