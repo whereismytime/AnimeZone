@@ -1,13 +1,15 @@
 {% extends "_layouts/base.html" %}
 {% load static %}
 
+{% block title %}Вхід - {{ block.super }}{% endblock %}
+
 {% block content %}
 <!-- Breadcrumb -->
 <section class="normal-breadcrumb set-bg" data-setbg="{% static 'img/normal-breadcrumb.jpg' %}">
   <div class="container text-center">
     <div class="normal__breadcrumb__text">
-      <h2>Login</h2>
-      <p>Welcome back</p>
+      <h2>Вхід</h2>
+      <p>Ласкаво просимо назад</p>
     </div>
   </div>
 </section>
@@ -18,27 +20,56 @@
     <div class="row">
       <div class="col-lg-6">
         <div class="login__form">
-          <h3>Login</h3>
+          <h3>Увійти в систему</h3>
+          
+          <!-- Відображення повідомлень -->
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert">
+                  <span>&times;</span>
+                </button>
+              </div>
+            {% endfor %}
+          {% endif %}
+          
           <form method="POST" novalidate>
             {% csrf_token %}
-            {{ form.non_field_errors }}
+            
+            {% if form.non_field_errors %}
+              <div class="alert alert-danger">
+                {{ form.non_field_errors }}
+              </div>
+            {% endif %}
+            
             <div class="input__item">
               {{ form.username }}
               <span class="icon_mail"></span>
+              {% if form.username.errors %}
+                <div class="text-danger small">{{ form.username.errors }}</div>
+              {% endif %}
             </div>
+            
             <div class="input__item">
               {{ form.password }}
               <span class="icon_lock"></span>
+              {% if form.password.errors %}
+                <div class="text-danger small">{{ form.password.errors }}</div>
+              {% endif %}
             </div>
-            <button type="submit" class="site-btn">Login Now</button>
+            
+            <button type="submit" class="site-btn">Увійти</button>
           </form>
-          <a href="#" class="forget_pass">Forgot Your Password?</a>
+          
+          <a href="#" class="forget_pass">Забули пароль?</a>
         </div>
       </div>
+      
       <div class="col-lg-6">
         <div class="login__register">
-          <h3>Don’t Have An Account?</h3>
-          <a href="{% url 'signup' %}" class="primary-btn">Register Now</a>
+          <h3>Ще немає акаунту?</h3>
+          <a href="{% url 'accounts:signup' %}" class="primary-btn">Зареєструватися</a>
         </div>
       </div>
     </div>

@@ -26,8 +26,8 @@
                                     <li><a href="{% url 'anime_details' 'demon-slayer' %}">Demon Slayer</a></li>
                                     <li><a href="{% url 'anime_watching' %}">Anime Watching</a></li>
                                     <li><a href="{% url 'blog_details' %}">Blog Details</a></li>
-                                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                                    <li><a href="{% url 'login' %}">Login</a></li>
+                                    <li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
+                                    <li><a href="{% url 'accounts:login' %}">Login</a></li>
                                 </ul>
                             </li>
                             <li class="{% if request.path == '/blog/' %}active{% endif %}">
@@ -40,8 +40,39 @@
             </div>
             <div class="col-lg-2">
                 <div class="header__right">
+                    <!-- Меню користувача -->
+                    {% if user.is_authenticated %}
+                        <div class="header__auth">
+                            <div class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-user"></i> {{ user.username }}
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{% url 'accounts:profile' %}">
+                                        <i class="fa fa-user"></i> Профіль
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{% url 'accounts:logout' %}">
+                                        <i class="fa fa-sign-out"></i> Вийти
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Простая кнопка выхода (альтернативный вариант) -->
+                            <a href="{% url 'accounts:logout' %}" class="logout-btn" title="Вийти">
+                                <i class="fa fa-sign-out"></i>
+                            </a>
+                        </div>
+                    {% else %}
+                        <div class="header__auth">
+                            <a href="{% url 'accounts:login' %}">
+                                <i class="fa fa-sign-in"></i> Увійти
+                            </a>
+                            <a href="{% url 'accounts:signup' %}" class="ml-3">
+                                <i class="fa fa-user-plus"></i> Реєстрація
+                            </a>
+                        </div>
+                    {% endif %}
                     <a href="#" class="search-switch"><span class="icon_search"></span></a>
-                    <a href="{% url 'login' %}"><span class="icon_profile"></span></a>
                 </div>
             </div>
         </div>
@@ -49,3 +80,100 @@
     </div>
 </header>
 <!-- Header Section End -->
+
+<!-- CSS стилі для меню користувача -->
+<style>
+.header__auth {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header__auth a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+.header__auth a:hover {
+    background-color: #e53637;
+    color: #ffffff;
+}
+
+.logout-btn {
+    background-color: #e53637 !important;
+    border-radius: 50% !important;
+    padding: 8px 10px !important;
+    margin-left: 10px;
+}
+
+.logout-btn:hover {
+    background-color: #d32f2f !important;
+}
+
+.dropdown-menu {
+    background-color: #0b0c2a;
+    border: 1px solid #e53637;
+    border-radius: 8px;
+}
+
+.dropdown-item {
+    color: #ffffff;
+    padding: 10px 20px;
+}
+
+.dropdown-item:hover {
+    background-color: #e53637;
+    color: #ffffff;
+}
+
+.dropdown-divider {
+    border-top: 1px solid #e53637;
+}
+
+/* Повідомлення */
+.alert {
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error, .alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+.alert-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border: 1px solid #bee5eb;
+}
+
+.alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border: 1px solid #ffeaa7;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 15px;
+    color: inherit;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 18px;
+}
+</style>

@@ -19,24 +19,67 @@
       <div class="col-lg-6">
         <div class="login__form">
           <h3>Sign Up</h3>
+          
+          <!-- Отображение сообщений -->
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+          
           <form method="POST" novalidate>
             {% csrf_token %}
-            {{ form.non_field_errors }}
+            
+            <!-- Общие ошибки формы -->
+            {% if form.non_field_errors %}
+              <div class="alert alert-danger">
+                {% for error in form.non_field_errors %}
+                  <p>{{ error }}</p>
+                {% endfor %}
+              </div>
+            {% endif %}
+            
             <div class="input__item">
               {{ form.username }}
               <span class="icon_profile"></span>
+              {% if form.username.errors %}
+                <div class="field-error">
+                  {% for error in form.username.errors %}
+                    <small class="text-danger">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              {% endif %}
             </div>
+            
             <div class="input__item">
               {{ form.password1 }}
               <span class="icon_lock"></span>
+              {% if form.password1.errors %}
+                <div class="field-error">
+                  {% for error in form.password1.errors %}
+                    <small class="text-danger">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              {% endif %}
             </div>
+            
             <div class="input__item">
               {{ form.password2 }}
               <span class="icon_lock"></span>
+              {% if form.password2.errors %}
+                <div class="field-error">
+                  {% for error in form.password2.errors %}
+                    <small class="text-danger">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              {% endif %}
             </div>
+            
             <button type="submit" class="site-btn">Register</button>
           </form>
-          <h5>Already have an account? <a href="{% url 'login' %}">Log In!</a></h5>
+          <h5>Already have an account? <a href="{% url 'accounts:login' %}">Log In!</a></h5>
         </div>
       </div>
       <div class="col-lg-6">
@@ -52,4 +95,39 @@
     </div>
   </div>
 </section>
+
+<style>
+.field-error {
+  margin-top: 5px;
+}
+
+.text-danger {
+  color: #dc3545;
+}
+
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.alert-error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+</style>
 {% endblock %}
