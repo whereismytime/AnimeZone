@@ -1,0 +1,51 @@
+{% extends "_layouts/base.html" %}
+{% load static %}
+
+{% block title %}Профіль - {{ block.super }}{% endblock %}
+
+{% block content %}
+<section class="normal-breadcrumb set-bg" data-setbg="{% static 'img/normal-breadcrumb.jpg' %}">
+  <div class="container text-center">
+    <div class="normal__breadcrumb__text">
+      <h2>Профіль користувача</h2>
+      <p>{{ user.username }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="card">
+          <div class="card-body">
+            <h3>Інформація про профіль</h3>
+            <table class="table">
+              <tr>
+                <td><strong>Ім'я користувача:</strong></td>
+                <td>{{ user.username }}</td>
+              </tr>
+              <tr>
+                <td><strong>Email:</strong></td>
+                <td>{{ user.email|default:"Не вказано" }}</td>
+              </tr>
+              <tr>
+                <td><strong>Дата реєстрації:</strong></td>
+                <td>{{ user.date_joined|date:"d.m.Y H:i" }}</td>
+              </tr>
+              <tr>
+                <td><strong>Останній вхід:</strong></td>
+                <td>{{ user.last_login|date:"d.m.Y H:i"|default:"Ніколи" }}</td>
+              </tr>
+            </table>
+            
+            <div class="mt-4">
+              <a href="{% url 'accounts:logout' %}" class="btn btn-danger">Вийти з системи</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

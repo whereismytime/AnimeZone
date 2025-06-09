@@ -130,5 +130,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
 import os
 print(f"[DEBUG] Templates loaded from: {os.path.join(BASE_DIR, 'templates')}")
