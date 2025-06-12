@@ -1,4 +1,5 @@
 from django.db import models
+<<<<<<< HEAD
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 
@@ -34,3 +35,7 @@ class NewsArticle(models.Model):
 
     def is_recent(self):
         return self.is_featured  
+=======
+
+# Create your models here.
+>>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6

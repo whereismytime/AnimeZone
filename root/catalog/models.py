@@ -1,4 +1,5 @@
 from django.db import models
+<<<<<<< HEAD
 from django.utils import timezone
 
 class Genre(models.Model):
@@ -58,3 +59,7 @@ class Anime(models.Model):
         elif delta.days <= 365:
             return 'years'
         return ''
+=======
+
+# Create your models here.
+>>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6

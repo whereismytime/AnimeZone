@@ -649,7 +649,10 @@ ol {
 
 .product__item {
 	margin-bottom: 30px;
+<<<<<<< HEAD
   
+=======
+>>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6
 }
 
 .product__item__pic {
@@ -2466,6 +2469,7 @@ ol {
     margin-top: 0.5rem; /* Трохи менший відступ зверху */
     font-size: 0.9em;
     width: 100%; 
+<<<<<<< HEAD
 }
 
 
@@ -2739,4 +2743,6 @@ ol {
 .icon_calendar {
     margin-right: 5px;
     opacity: 0.8;
+=======
+>>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6
 }

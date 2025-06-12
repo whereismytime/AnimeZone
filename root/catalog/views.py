@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.shortcuts import render
 from django.utils import timezone
 from catalog.models import Anime, Genre
@@ -23,5 +24,23 @@ def categories_view(request):
         'all_genres': Genre.objects.order_by('name'),
         'top_views': top_views,
         'selected_period': 'day',
+=======
+# catalog/views.py
+from django.shortcuts import render
+from home.views import DUMMY_PRODUCTS 
+
+def categories_view(request):
+    genre = request.GET.get('genre')
+    products = DUMMY_PRODUCTS
+
+    if genre:
+        products = [p for p in products if genre in p.get('genres', [])]
+
+    context = {
+        'products': products,
+        'selected_genre': genre or "All",
+        'all_genres': sorted({g for p in DUMMY_PRODUCTS for g in p['genres']}),
+        'popular_products': DUMMY_PRODUCTS[:5],  
+>>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6
     }
     return render(request, 'catalog/categories.html', context)

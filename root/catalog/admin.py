@@ -1,4 +1,5 @@
 from django.contrib import admin
+<<<<<<< HEAD
 from .models import Anime, Genre
 from django.utils.html import format_html
 
@@ -21,3 +22,7 @@ class AnimeAdmin(admin.ModelAdmin):
 @admin.register(Genre)
 class GenreAdmin(admin.ModelAdmin):
     search_fields = ('name',)
+=======
+
+# Register your models here.
+>>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6
