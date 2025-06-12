@@ -649,6 +649,10 @@ ol {
 
 .product__item {
 	margin-bottom: 30px;
+<<<<<<< HEAD
+  
+=======
+>>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6
 }
 
 .product__item__pic {
@@ -2465,4 +2469,280 @@ ol {
     margin-top: 0.5rem; /* Трохи менший відступ зверху */
     font-size: 0.9em;
     width: 100%; 
+<<<<<<< HEAD
+}
+
+
+/* Це для Hero */
+
+.hero__text {
+    position: relative;
+    color: #fff;
+}
+
+.hero__text::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    bottom: -20px;
+    left: -30px;
+    right: -30px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.3));
+    z-index: -1;
+    border-radius: 12px;
+    backdrop-filter: blur(2px);
+}
+
+.hero__text h2 {
+    -webkit-text-stroke: 0.5px black;
+    font-weight: 700;
+}
+
+/* убираем тень с мелкого текста */
+.hero__text .label,
+.hero__text p,
+.hero__text .view {
+    -webkit-text-stroke: 0;
+    text-shadow: none;
+}
+
+/* === Custom Styles for Contact Form === */
+.contact form label {
+    color: #ffffff;
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.contact form .form-group input,
+.contact form .form-group textarea {
+    background-color: #ffffff;
+    color: #212529;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 10px;
+    width: 100%;
+}
+
+.contact form .form-group input:focus,
+.contact form .form-group textarea:focus {
+    border-color: #e53637;
+    box-shadow: 0 0 0 0.2rem rgba(229, 54, 55, 0.25);
+}
+
+.contact form .form-group .text-danger {
+    color: #e57373 !important;
+    font-size: 0.875em;
+}
+
+.contact .alert {
+    font-size: 0.95em;
+}
+
+.contact .section-title h4 {
+    color: #ffffff;
+}
+
+
+/* Улучшения секций Trending, Popular, Recent и Live на основе текущих стилей */
+
+.trending__product,
+.popular__product,
+.recent__product,
+.live__product {
+	margin-bottom: 60px;
+	padding-bottom: 40px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-title h4,
+.section-title h5 {
+	padding-left: 25px;
+	font-family: 'Oswald', sans-serif;
+	color: #ffffff;
+	text-transform: uppercase;
+	position: relative;
+}
+
+.section-title h4::after,
+.section-title h5::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: -6px;
+	width: 4px;
+	height: 32px;
+	background-color: #e53637;
+}
+
+/* улучшения кнопок View All */
+.btn__all .primary-btn {
+	transition: color 0.3s;
+}
+
+.btn__all .primary-btn:hover {
+	color: #e53637;
+}
+
+/* эффекты для карточек продукта */
+.product__item {
+	transition: transform 0.3s ease;
+}
+
+.product__item:hover {
+	transform: translateY(-5px);
+}
+
+.product__item__pic {
+	border-radius: 5px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.product__item__text h5 a:hover {
+	color: #e53637;
+}
+
+/* улучшения сайдбара популярных продуктов */
+.product__sidebar__view__item {
+	transition: transform 0.3s ease;
+}
+
+.product__sidebar__view__item:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: flex-start;
+}
+
+.product-grid > * {
+    flex: 0 0 auto;
+    width: 220px; /* фиксированная ширина как у карточек из Bootstrap */
+}
+
+
+.sidebar__title-box h5 {
+    display: inline; /* Меняем на inline чтобы фон был только вокруг текста */
+    background: none; /* Убираем фон с контейнера */
+    padding: 0;
+    margin: 0;
+    margin-left: 20px;
+}
+
+.sidebar__title-box h5 a {
+    color: #fff;
+    font-weight: 400;
+    font-size: 15px;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.801); /* Перемещаем фон на сам текст */
+    padding: 6px 10px;
+    border-radius: 6px;
+    box-decoration-break: clone; /* Важное свойство для переноса строк */
+    -webkit-box-decoration-break: clone; /* Для поддержки Safari */
+    line-height: 1.8; /* Добавляем line-height для лучших промежутков при переносе */
+}
+
+
+/*СТИЛИ*/
+
+/* Custom Blog Item Styles */
+.blog__item {
+    position: relative;
+    height: 580px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.blog__item:hover {
+    transform: translateY(-5px);
+}
+
+.blog__item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, 
+        rgba(0, 0, 0, 0.9) 0%,
+        rgba(0, 0, 0, 0.7) 50%,
+        rgba(0, 0, 0, 0.3) 100%);
+    z-index: 1;
+}
+
+.blog__item__text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px;
+    z-index: 2;
+}
+
+/* Text elements with consistent backdrop */
+.blog__item__text > * {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+
+.blog__item__text h4 a {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.blog__item__text p {
+    color: #b7b7b7;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Badges and tags */
+.badge {
+    display: inline-block;
+    color: #fff;
+    font-size: 15px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-left: 8px;
+}
+
+.blog__item__text .tags {
+    font-size: 12px;
+    color: #ccc;
+    opacity: 0.8;
+}
+
+/* Author info */
+.blog__item__text .author {
+    font-weight: 600;
+    color: #fff;
+}
+
+/* Date styling */
+.blog__item__text .date {
+    color: #b7b7b7;
+    font-size: 13px;
+}
+
+/* Icon styling */
+.icon_calendar {
+    margin-right: 5px;
+    opacity: 0.8;
+=======
+>>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6
 }

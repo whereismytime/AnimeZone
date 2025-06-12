@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+
+import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dev-secret-key')
+DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split()
+
+INSTALLED_APPS = [
+    'django.contrib.admin','django.contrib.auth','django.contrib.contenttypes',
+    'django.contrib.sessions','django.contrib.messages','django.contrib.staticfiles',
+    'accounts','catalog','home','news','contact','blog',
+=======
 """
 Django settings for config project.
 
@@ -42,6 +58,7 @@ INSTALLED_APPS = [
     'home',
     'news',
     'blog',
+>>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6
 ]
 
 MIDDLEWARE = [
@@ -52,10 +69,31 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+<<<<<<< HEAD
+    'accounts.middleware.AuthRequiredMiddleware',
+=======
+>>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6
 ]
 
 ROOT_URLCONF = 'config.urls'
 
+<<<<<<< HEAD
+TEMPLATES = [{
+    'BACKEND': 'django.template.backends.django.DjangoTemplates',
+    'DIRS': [BASE_DIR / 'templates'],
+    'APP_DIRS': True,
+    'OPTIONS': {
+        'context_processors': [
+            'django.template.context_processors.request',
+            'django.contrib.auth.context_processors.auth',
+            'django.contrib.messages.context_processors.messages',
+        ],
+    },
+}]
+
+WSGI_APPLICATION = 'config.wsgi.application'
+
+=======
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -77,6 +115,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+>>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -84,6 +123,23 @@ DATABASES = {
     }
 }
 
+<<<<<<< HEAD
+AUTH_PASSWORD_VALIDATORS = [
+    {'NAME':'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},
+    {'NAME':'django.contrib.auth.password_validation.MinimumLengthValidator',},
+    {'NAME':'django.contrib.auth.password_validation.CommonPasswordValidator',},
+    {'NAME':'django.contrib.auth.password_validation.NumericPasswordValidator',},
+]
+
+LANGUAGE_CODE = 'en-us'
+TIME_ZONE = 'UTC'
+USE_I18N = True
+USE_TZ = True
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'  
+=======
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -121,10 +177,18 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [ BASE_DIR / "static" ]
+>>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+<<<<<<< HEAD
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = 'accounts:login'
+LOGIN_REDIRECT_URL = 'home:index'
+LOGOUT_REDIRECT_URL = 'home:index'
+=======
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
@@ -136,3 +200,4 @@ LOGOUT_REDIRECT_URL = '/'
 
 import os
 print(f"[DEBUG] Templates loaded from: {os.path.join(BASE_DIR, 'templates')}")
+>>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6

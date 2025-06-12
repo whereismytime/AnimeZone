@@ -1,3 +1,97 @@
+<<<<<<< HEAD
+{% extends '_layouts/base.html' %}
+{% load static %}
+
+{% block title %}Категории | AnimeZone{% endblock %}
+
+{% block content %}
+<section class="product-page spad">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-8">
+        <div class="product__page__content">
+          <div class="product__page__title">
+            <div class="row">
+              <div class="col-lg-8 col-md-8 col-sm-6">
+                <div class="section-title">
+                  <h4>{{ selected_genre }}</h4>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="product__page__filter">
+                  <form method="get" id="genre-filter-form">
+                      <select name="genre" onchange="document.getElementById('genre-filter-form').submit()">
+                          <option value="All" {% if "All" == selected_genre %}selected{% endif %}>All Genres</option>
+                          {% for genre in all_genres %}
+                            <option value="{{ genre.name }}" {% if genre.name == selected_genre %}selected{% endif %}>
+                              {{ genre.name }}
+                            </option>
+                          {% endfor %}
+                      </select>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+                <div class="product__controls">
+                    <ul class="filter__controls">
+                        <li class{% if selected_period == 'all' %} "active"{% endif %}>
+                            <a href="?genre={{ selected_genre }}&period=all">All</a>
+                        </li>
+                        <li class{% if selected_period == 'day' %} "active"{% endif %}>
+                            <a href="?genre={{ selected_genre }}&period=day">Day</a>
+                        </li>
+                        <li class{% if selected_period == 'week' %} "active"{% endif %}>
+                            <a href="?genre={{ selected_genre }}&period=week">Week</a>
+                        </li>
+                        <li class{% if selected_period == 'month' %} "active"{% endif %}>
+                            <a href="?genre={{ selected_genr_ }}&period=month">Month</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            {% for product in products %}
+              <div class="col-lg-4 col-md-6 col-sm-6">
+                  {% include '_sections/_product_card.html' with product=product %}
+              </div>
+            {% empty %}
+              <div class="col-12">
+                  <p>По вашему запросу ничего не найдено.</p>
+              </div>
+            {% endfor %}
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        {% include '_sections/sidebar.html' %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+    .product__controls .filter__controls li a {
+        color: #ffffff;
+        text-decoration: none;
+    }
+    .product__controls .filter__controls li.active {
+        background-color: #e53637;
+        color: #ffffff;
+    }
+    .product__controls .filter__controls li.active a {
+        color: #ffffff;
+    }
+</style>
+{% endblock %}
+=======
 {% load static %}
 
 <!DOCTYPE html>
@@ -584,3 +678,4 @@
 </body>
 
 </html>
+>>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6

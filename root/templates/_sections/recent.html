@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+<div class="recent__product">
+    <div class="section-header">
+        <div class="section-title">
+            <h4>Recently Added Shows</h4>
+        </div>
+        <div class="btn__all">
+            <a href="{% url 'catalog:categories' %}" class="primary-btn">View All <span class="arrow_right"></span></a>
+        </div>
+    </div>
+    <div class="product-grid">
+=======
 {% load static %}
 
 <div class="recent__product">
@@ -15,8 +27,13 @@
     </div>
 
     <div class="row">
+>>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6
         {% for product in recent_products %}
             {% include "_sections/_product_card.html" with product=product %}
         {% endfor %}
     </div>
+<<<<<<< HEAD
 </div>
+=======
+</div>
+>>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6

@@ -1,19 +1,48 @@
 {% extends '_layouts/base.html' %}
 {% load static %}
 
+<<<<<<< HEAD
+{% block title %}Категории | AnimeZone{% endblock %}
+
+=======
+>>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6
 {% block content %}
 <section class="product-page spad">
   <div class="container">
     <div class="row">
+<<<<<<< HEAD
+
+=======
+>>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6
       <div class="col-lg-8">
         <div class="product__page__content">
           <div class="product__page__title">
             <div class="row">
+<<<<<<< HEAD
+              <div class="col-lg-8 col-md-8 col-sm-6">
+=======
               <div class="col-lg-8">
+>>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6
                 <div class="section-title">
                   <h4>{{ selected_genre }}</h4>
                 </div>
               </div>
+<<<<<<< HEAD
+              <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="product__page__filter">
+                  {# Фильтр по жанрам перезагружает страницу #}
+                  <form method="get" id="genre-filter-form">
+                      <select name="genre" onchange="this.form.submit()">
+                          <option value="All" {% if "All" == selected_genre %}selected{% endif %}>All Genres</option>
+                          {% for genre in all_genres %}
+                            <option value="{{ genre.name }}" {% if genre.name == selected_genre %}selected{% endif %}>
+                              {{ genre.name }}
+                            </option>
+                          {% endfor %}
+                      </select>
+                  </form>
+                </div>
+=======
               <div class="col-lg-4">
                 <form method="get" class="product__page__filter">
                   <select name="genre" onchange="this.form.submit()">
@@ -23,10 +52,25 @@
                     {% endfor %}
                   </select>
                 </form>
+>>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6
               </div>
             </div>
           </div>
 
+<<<<<<< HEAD
+          {# ЭТО ГАЛЕРЕЯ ДЛЯ MIXITUP #}
+          <div class="row filter__gallery">
+            {% for product in products %}
+              {# Каждый элемент имеет класс .mix и динамический класс для фильтрации #}
+              <div class="col-lg-4 col-md-6 col-sm-6 mix {{ product.filter_class }}">
+                {% include '_sections/_product_card.html' with product=product %}
+              </div>
+            {% empty %}
+              <div class="col-12"><p>В этой категории пока нет аниме.</p></div>
+            {% endfor %}
+          </div>
+
+=======
           <div class="row">
             {% for product in products %}
               {% include '_sections/_product_card.html' with product=product %}
@@ -34,10 +78,20 @@
               <p>No products in this category.</p>
             {% endfor %}
           </div>
+>>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6
         </div>
       </div>
 
       <div class="col-lg-4">
+<<<<<<< HEAD
+        {# Вставляем сайдбар с кнопками фильтрации #}
+        {% include '_sections/sidebar.html' with popular_products=popular_products %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+=======
         {% include '_sections/sidebar.html' %}
       </div>
     
@@ -45,3 +99,4 @@
   </div>
 </section>
 {% endblock %}
+>>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6
