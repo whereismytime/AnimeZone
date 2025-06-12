@@ -1,0 +1,19 @@
+{% load short_number %}
+
+<div class="product__item">
+    <div class="product__item__pic set-bg" data-setbg="{{ product.image.url }}">
+        <div class="ep">{{ product.episodes }}</div>
+        {% if product.comments_count %}
+            <div class="comment"><i class="fa fa-comments"></i> {{ product.comments_count|short_number }}</div>
+        {% endif %}
+        <div class="view"><i class="fa fa-eye"></i> {{ product.views|short_number }}</div>
+    </div>
+    <div class="product__item__text">
+        <ul>
+            {% for genre in product.genres.all %}
+                <li>{{ genre.name }}</li>
+            {% endfor %}
+        </ul>
+        <h5><a href="{% url 'home:anime_details' product.slug %}">{{ product.title }}</a></h5>
+    </div>
+</div>

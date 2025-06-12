@@ -1,0 +1,22 @@
+{% load static %}
+<footer class="footer">
+  <div class="page-up">
+    <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
+  </div>
+  <div class="container">
+    <div class="row justify-content-between align-items-center">
+      <div class="col-lg-4 text-left">
+        <div class="footer__logo">
+          <a href="{% url 'home:index' %}">
+            <img src="{% static 'img/logo.png' %}" alt="AnimeZone">
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-4 text-right">
+        <p class="mb-0 text-muted">
+          &copy; {{ now|date:"Y" }} AnimeZone. Made with ❤️ by the team.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

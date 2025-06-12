@@ -1,0 +1,15 @@
+<div class="trending__product">
+    <div class="section-header">
+        <div class="section-title">
+            <h4>Trending Now</h4>
+        </div>
+        <div class="btn__all">
+            <a href="{% url 'catalog:categories' %}" class="primary-btn">View All <span class="arrow_right"></span></a>
+        </div>
+    </div>
+    <div class="product-grid">
+        {% for product in trending_products %}
+            {% include "_sections/_product_card.html" with product=product %}
+        {% endfor %}
+    </div>
+</div>

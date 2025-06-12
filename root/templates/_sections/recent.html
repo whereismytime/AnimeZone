@@ -1,0 +1,15 @@
+<div class="recent__product">
+    <div class="section-header">
+        <div class="section-title">
+            <h4>Recently Added Shows</h4>
+        </div>
+        <div class="btn__all">
+            <a href="{% url 'catalog:categories' %}" class="primary-btn">View All <span class="arrow_right"></span></a>
+        </div>
+    </div>
+    <div class="product-grid">
+        {% for product in recent_products %}
+            {% include "_sections/_product_card.html" with product=product %}
+        {% endfor %}
+    </div>
+</div>

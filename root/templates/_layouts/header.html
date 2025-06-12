@@ -1,0 +1,65 @@
+{% load static %}
+
+<!-- Header Section Begin -->
+<header class="header">
+  <div class="container d-flex align-items-center justify-content-between">
+    <div class="header__logo">
+      <a href="{% url 'home:index' %}">
+        <img src="{% static 'img/logo.png' %}" alt="AnimeZone">
+      </a>
+    </div>
+
+    <div class="header__nav">
+      <nav class="header__menu mobile-menu">
+        <ul>
+          <li class="{% if request.resolver_match.namespace == 'home' %}active{% endif %}">
+            <a href="{% url 'home:index' %}">Homepage</a>
+          </li>
+          <li class="{% if request.resolver_match.namespace == 'catalog' %}active{% endif %}">
+            <a href="{% url 'catalog:categories' %}">Categories</a>
+          </li>
+          <li class="{% if request.resolver_match.namespace == 'blog' %}active{% endif %}">
+            <a href="{% url 'blog:blog_list' %}">Our Blog</a>
+          </li>
+          <li class="{% if request.resolver_match.namespace == 'news' %}active{% endif %}">
+            <li><a href="{% url 'news:news' %}">News</a></li>
+          </li>
+          <li class="{% if request.resolver_match.namespace == 'contact' %}active{% endif %}">
+            <a href="{% url 'contact:contact' %}">Contacts</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="header__right d-flex align-items-center">
+      {% if user.is_authenticated %}
+        <div class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-user"></i> {{ user.username }}
+          </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="{% url 'accounts:profile' %}">
+              <i class="fa fa-user"></i> Profile
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'accounts:logout' %}">
+              <i class="fa fa-sign-out"></i> Logout
+            </a>
+          </div>
+        </div>
+      {% else %}
+        <a href="{% url 'accounts:login' %}" class="mr-3">
+          <i class="fa fa-sign-in"></i> Login
+        </a>
+        <a href="{% url 'accounts:signup' %}">
+          <i class="fa fa-user-plus"></i> Sign Up
+        </a>
+      {% endif %}
+      <a href="#" class="search-switch ml-3"><span class="icon_search"></span></a>
+    </div>
+
+    <!-- вот сюда slicknav прицепит мобильное меню -->
+    <div id="mobile-menu-wrap"></div>
+  </div>
+</header>
+<!-- Header End -->

@@ -1,0 +1,28 @@
+{% load static %}
+{% load short_number %}
+
+<section class="hero">
+  <div class="container">
+    <div class="hero__slider owl-carousel">
+      {% for item in featured_anime %}
+        <div class="hero__items set-bg" data-setbg="{{ item.image.url }}">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="hero__text">
+                <div class="label">{{ item.label }}</div>
+                <h2>{{ item.anime.title }}</h2>
+                <p>{{ item.subtitle }}</p>
+                <a href="{% url 'home:anime_details' item.anime.slug %}">
+                  <span>Watch Now</span> <i class="fa fa-angle-right"></i>
+                </a>
+                <div class="view mt-2 text-light">
+                  <i class="fa fa-eye"></i> {{ item.anime.views|short_number }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
