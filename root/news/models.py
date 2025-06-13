@@ -1,5 +1,4 @@
 from django.db import models
-<<<<<<< HEAD
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 
@@ -19,7 +18,7 @@ class NewsArticle(models.Model):
     title = models.CharField("Заголовок", max_length=200)
     slug = models.SlugField("Слаг", unique=True, max_length=200)
     content = models.TextField("Вміст")
-    published_at = models.DateTimeField("Дата публікації", default=timezone.now)  
+    published_at = models.DateTimeField("Дата публікації", default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, verbose_name="Автор")
     image = models.ImageField("Зображення (фон)", upload_to="news/", null=True, blank=True)
     is_featured = models.BooleanField("Виділити як нову", default=False)
@@ -34,8 +33,4 @@ class NewsArticle(models.Model):
         return self.title
 
     def is_recent(self):
-        return self.is_featured  
-=======
-
-# Create your models here.
->>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6
+        return self.is_featured

@@ -6,67 +6,28 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.urls import reverse
 
 def signup_view(request):
-<<<<<<< HEAD
-    if request.user.is_authenticated:
-        return redirect('home:index') 
-
-=======
     """
-    View для реєстрації нових користувачів зі стандартною формою Django
+    View for registering new users using Django's default UserCreationForm.
     """
     if request.user.is_authenticated:
         return redirect('index')
     
->>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             try:
                 user = form.save()
                 username = form.cleaned_data.get('username')
-<<<<<<< HEAD
-                messages.success(request, f'Аккаунт створено для {username}!')
-                login(request, user)
-                return redirect('home:index') 
-            except Exception as e:
-                messages.error(request, f'Помилка при створенні акаунта: {str(e)}')
-        else:
-            for field, errors in form.errors.items():
-                for error in errors:
-                    messages.error(request, f'{form.fields[field].label}: {error}')
-    else:
-        form = UserCreationForm()
-
-    return render(request, 'accounts/signup.html', {'form': form})
-
-
-def login_view(request):
-    if request.user.is_authenticated:
-        return redirect('home:index')  
-
-    if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            user = authenticate(
-                username=form.cleaned_data.get('username'),
-                password=form.cleaned_data.get('password')
-            )
-            if user is not None:
-                login(request, user)
-                messages.success(request, f'Ласкаво просимо, {user.username}!')
-                return redirect(request.GET.get('next') or 'home:index')  
-=======
                 messages.success(
                     request, 
-                    f'Аккаунт створено для {username}! Тепер ви можете увійти.'
+                    f'Account created for {username}! Now you can log in.'
                 )
-                # Логируем пользователя сразу после регистрации
                 login(request, user)
-                return redirect('index')  # Перенаправляем на главную
+                return redirect('index')  # Redirect to the home page
             except Exception as e:
-                messages.error(request, f'Помилка при створенні акаунта: {str(e)}')
+                messages.error(request, f'Error creating account: {str(e)}')
         else:
-            # Показываем ошибки формы
+            # Show form errors
             for field, errors in form.errors.items():
                 field_name = form.fields[field].label or field
                 for error in errors:
@@ -78,7 +39,7 @@ def login_view(request):
 
 def login_view(request):
     """
-    View для входу користувача зі стандартною формою Django
+    View for logging in a user using Django's default AuthenticationForm.
     """
     if request.user.is_authenticated:
         return redirect('index')
@@ -91,57 +52,38 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                messages.success(request, f'Ласкаво просимо, {username}!')
+                messages.success(request, f'Welcome, {username}!')
                 
-                # Перенаправлення після входу
+                # Redirect after login
                 next_page = request.GET.get('next')
                 if next_page:
                     return redirect(next_page)
                 else:
                     return redirect('index')
->>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6
             else:
-                messages.error(request, 'Невірне ім\'я користувача або пароль.')
+                messages.error(request, 'Invalid username or password.')
         else:
-            messages.error(request, 'Будь ласка, виправте помилки в формі.')
+            messages.error(request, 'Please correct the errors in the form.')
     else:
         form = AuthenticationForm()
-<<<<<<< HEAD
-
-    return render(request, 'accounts/login.html', {'form': form})
-
-
-def logout_view(request):
-    if request.user.is_authenticated:
-        username = request.user.username
-        logout(request)
-        messages.info(request, f'До побачення, {username}!')
-    return redirect('home:index') 
-
-
-@login_required
-def profile_view(request):
-    return render(request, 'accounts/profile.html', {'user': request.user})
-=======
     
     return render(request, 'accounts/login.html', {'form': form})
 
 def logout_view(request):
     """
-    View для виходу користувача з системи
+    View for logging out a user.
     """
     if request.user.is_authenticated:
         username = request.user.username
         logout(request)
-        messages.info(request, f'До побачення, {username}! Ви успішно вийшли з системи.')
+        messages.info(request, f'Goodbye, {username}! You have successfully logged out.')
     return redirect('index')
 
 @login_required
 def profile_view(request):
     """
-    View для відображення профілю користувача
+    View for displaying the user's profile.
     """
     return render(request, 'accounts/profile.html', {
         'user': request.user
     })
->>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6

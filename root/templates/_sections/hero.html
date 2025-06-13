@@ -1,5 +1,4 @@
 {% load static %}
-<<<<<<< HEAD
 {% load short_number %}
 
 <section class="hero">
@@ -13,7 +12,7 @@
                 <div class="label">{{ item.label }}</div>
                 <h2>{{ item.anime.title }}</h2>
                 <p>{{ item.subtitle }}</p>
-                <a href="{% url 'home:anime_details' item.anime.slug %}">
+                <a href="{% url 'anime_details' item.anime.slug %}">
                   <span>Watch Now</span> <i class="fa fa-angle-right"></i>
                 </a>
                 <div class="view mt-2 text-light">
@@ -26,50 +25,4 @@
       {% endfor %}
     </div>
   </div>
-=======
-
-<section class="hero">
-    <div class="container">
-        <div class="hero__slider owl-carousel">
-            <div class="hero__items set-bg" data-setbg="{% static 'img/hero/hero-1.jpg' %}">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="hero__text">
-                            <div class="label">Adventure</div>
-                            <h2>Fate / Stay Night: Unlimited Blade Works</h2>
-                            <p>After 30 days of travel across the world...</p>
-                            <a href="#"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="hero__items set-bg" data-setbg="{% static 'img/hero/hero-2.jpg' %}">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="hero__text">
-                            <div class="label">Fantasy</div>
-                            <h2>Attack on Titan: Final Season</h2>
-                            <p>The war for Paradis explodes...</p>
-                            <a href="#"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="hero__items set-bg" data-setbg="{% static 'img/hero/hero-3.jpg' %}">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="hero__text">
-                            <div class="label">Action</div>
-                            <h2>Demon Slayer: Mugen Train</h2>
-                            <p>Board the train to face powerful demons...</p>
-                            <a href="#"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
->>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6
 </section>

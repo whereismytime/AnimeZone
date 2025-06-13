@@ -1,5 +1,4 @@
 {% load static %}
-<<<<<<< HEAD
 <footer class="footer">
   <div class="page-up">
     <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
@@ -8,59 +7,16 @@
     <div class="row justify-content-between align-items-center">
       <div class="col-lg-4 text-left">
         <div class="footer__logo">
-          <a href="{% url 'home:index' %}">
+          <a href="{% url 'index' %}">
             <img src="{% static 'img/logo.png' %}" alt="AnimeZone">
           </a>
         </div>
       </div>
       <div class="col-lg-4 text-right">
         <p class="mb-0 text-muted">
-          &copy; {{ now|date:"Y" }} AnimeZone. Made with ❤️ by the team.
+          &copy; {% now "Y" %} AnimeZone. Made with ❤️ by the team.
         </p>
       </div>
     </div>
   </div>
 </footer>
-=======
-<!-- Footer Section Begin -->
-<footer class="footer">
-    <div class="page-up">
-        <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="footer__logo">
-                    <a href="{% url 'index' %}">
-                        <img src="{% static 'img/logo.png' %}" alt="Logo">
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="footer__nav">
-                    <ul>
-                        <li class="{% if request.path == '/' %}active{% endif %}">
-                            <a href="{% url 'index' %}">Homepage</a>
-                        </li>
-                        <li class="{% if request.path == '/categories/' %}active{% endif %}">
-                            <a href="{% url 'categories' %}">Categories</a>
-                        </li>
-                        <li class="{% if request.path == '/blog/' %}active{% endif %}">
-                            <a href="{% url 'blog:blog_list' %}">Our Blog</a>
-                        </li>
-                        <li><a href="#">Contacts</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <p>
-                    &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | 
-                    This template is made with <i class="fa fa-heart" aria-hidden="true"></i> 
-                    by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                </p>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- Footer Section End -->
->>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6

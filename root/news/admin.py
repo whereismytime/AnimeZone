@@ -1,5 +1,4 @@
 from django.contrib import admin
-<<<<<<< HEAD
 from .models import NewsArticle, Tag
 from django.utils.html import format_html
 from django.utils.timezone import localtime
@@ -41,7 +40,3 @@ class NewsArticleAdmin(admin.ModelAdmin):
 class TagAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ('name',)
-=======
-
-# Register your models here.
->>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6

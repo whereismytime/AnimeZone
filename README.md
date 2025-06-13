@@ -1,85 +1,77 @@
 # 🎌 AnimeZone — Django Anime Portal
 
-AnimeZone — це повноцінний Django-проєкт для створення аніме-порталу: з кастомним UI, блогом, системою акаунтів, кошиком, AJAX-логікою та адаптованим шаблоном Anime від ThemeWagon.
+[![Python](https://img.shields.io/badge/python-3.11+-blue.svg)](https://python.org)
+[![Django](https://img.shields.io/badge/django-5.x-green.svg)](https://www.djangoproject.com)
+[![License](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 
----
+AnimeZone is a full-featured Django web portal for anime fans. It includes a custom UI, blog system, user accounts, dynamic content and an adapted Anime template from ThemeWagon.
 
-## 🚀 Швидкий старт
+## ✨ Features
 
-### 🔽 1. Клонувати репозиторій
+- 📺 **Extensive Anime Catalog** with filtering and search
+- 👥 **User Accounts** with registration and profiles  
+- 📝 **Blog System** for news and articles
+- 🎨 **Custom UI** with responsive design
+- ⚡ **Dynamic Frontend** using jQuery/AJAX
+- 🔑 **Admin Panel** for content management
+
+## 🚀 Quick Start
+
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/whereismytime/AnimeZone.git
 cd AnimeZone
 ```
 
----
-
-### 🐍 2. Створити та активувати віртуальне середовище
+### 2. Set Up Virtual Environment
 
 ```bash
 python -m venv venv
-.\venv\Scripts\activate        # Windows
 
-# або для Mac/Linux:
-# source venv/bin/activate
+# Windows
+.\venv\Scripts\activate
+
+# Mac/Linux
+source venv/bin/activate
 ```
 
----
-
-### 📦 3. Встановити залежності
+### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-> Якщо файл `requirements.txt` відсутній, згенеруй:
-```bash
-pip freeze > requirements.txt
-```
-
----
-
-### ⚙️ 4. Застосувати міграції
+### 4. Run Migrations
 
 ```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
 
----
+### 5. Create Admin User
 
-### 👤 5. Створити адміністратора
-
-```bash
+```bash 
 python manage.py createsuperuser
 ```
 
----
+### 6. Check Static & Media Directories
 
-### 💽 6. Перевірити наявність `static/` і `media/`
-
-Якщо немає — створити:
-
+Create if missing:
 ```bash
 mkdir static
 mkdir media
 ```
 
----
-
-### 🔥 7. Запустити сервер
+### 7. Start Development Server
 
 ```bash
 python manage.py runserver
 ```
 
-Перейти в браузері:  
-👉 http://127.0.0.1:8000/
+Visit 👉 http://127.0.0.1:8000/
 
----
-
-## 🛠️ Стек технологій
+## 🛠️ Tech Stack
 
 - Django 5.x
 - HTML5 + Bootstrap 4
@@ -89,8 +81,8 @@ python manage.py runserver
 
 ---
 
-## 📄 Ліцензія
+## 📄 License
 
-Open-source проєкт. Можна вільно редагувати, поширювати і використовувати в комерційних цілях.
+Open-source project. Feel free to edit, share, and use for commercial purposes.
 
 

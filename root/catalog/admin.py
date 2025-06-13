@@ -1,8 +1,6 @@
 from django.contrib import admin
-<<<<<<< HEAD
 from .models import Anime, Genre
 from django.utils.html import format_html
-
 
 @admin.register(Anime)
 class AnimeAdmin(admin.ModelAdmin):
@@ -18,11 +16,6 @@ class AnimeAdmin(admin.ModelAdmin):
         return "-"
     preview_image.short_description = "Обкладинка"
 
-
 @admin.register(Genre)
 class GenreAdmin(admin.ModelAdmin):
     search_fields = ('name',)
-=======
-
-# Register your models here.
->>>>>>> 9b57fad859342b59893408cc7b228fa1c821b3d6
