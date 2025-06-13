@@ -1,0 +1,33 @@
+{% extends '_layouts/base.html' %}
+{% load static %}
+
+{% block title %}{{ post.title }} | Blog Details{% endblock %}
+
+{% block content %}
+<section class="blog-details spad">
+    <div class="container">
+        <div class="blog__details__title">
+            
+            <h2>{{ post.title }}</h2>
+            <div class="blog__details__social">
+                <a href="#" class="facebook"><i class="fa fa-facebook-square"></i> Facebook</a>
+                <a href="#" class="pinterest"><i class="fa fa-pinterest"></i> Pinterest</a>
+                <a href="#" class="linkedin"><i class="fa fa-linkedin-square"></i> Linkedin</a>
+                <a href="#" class="twitter"><i class="fa fa-twitter-square"></i> Twitter</a>
+            </div>
+        </div>
+
+        {% if post.image %} 
+        <div class="blog__details__pic">
+            <img src="{{ post.image.url }}" alt="{{ post.title }}">
+        </div>
+        {% endif %}
+
+        <div class="blog__details__content">
+            <div class="blog__details__text">
+                <p>{{ post.content|linebreaks }}</p> 
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
